@@ -2,5 +2,5 @@
 ...
 ## Tools
 Visual Studio Community2022<br>
-OpenGL<br>
+Modern OpenGL<br>
 ...<br>
