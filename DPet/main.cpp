@@ -9,8 +9,71 @@
 #include "windows.h"
 #include "shellapi.h"
 
+#include "thread"
+#include "chrono"
+
 #pragma comment(lib, "glfw3.lib")
 #pragma comment(lib, "opengl32.lib")
+
+#define UCHAR(n) static_cast<unsigned char>(n)
+#define USHORT(n) static_cast<unsigned short>(n)
+#define SLEEP(n) std::this_thread::sleep_for(std::chrono::milliseconds(n))
+
+class CoreSystem {
+public:
+	struct Frame {
+
+	}; static Frame* fram;
+private:
+	class Charactor {
+	private:
+
+	public:
+
+	};
+	class Menu {
+	private:
+
+		bool program_run = true;
+	public:
+
+	};
+
+
+
+	HANDLE process_check{ nullptr };
+
+	Charactor* charactor{ nullptr };
+	Menu* menu{ nullptr };
+public:
+	CoreSystem() {
+		process_check = CreateMutex(NULL, TRUE, L"6B7BSnowDropProgram");
+		if (GetLastError() == ERROR_ALREADY_EXISTS) {
+			if (process_check) CloseHandle(process_check);
+			exit(-1);
+		}
+
+		if (!glfwInit()) exit(-1);
+
+		charactor = new Charactor;
+		menu = new Menu;
+		
+		while (true) {
+			glfwPollEvents();
+
+			// code
+
+			SLEEP(25);
+		}
+	}
+	~CoreSystem() {
+		if (charactor != nullptr) delete charactor;
+		if (menu != nullptr) delete menu;
+
+		glfwTerminate();
+		if (process_check) CloseHandle(process_check);
+	}
+};
 
 int main() {
 	return 0;
