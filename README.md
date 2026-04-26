@@ -1,6 +1,6 @@
 # ConsoleProject
 ...
 ## Tools
-visual studio community2022<br>
-opengl<br>
+Visual Studio Community2022<br>
+OpenGL<br>
 ...<br>
