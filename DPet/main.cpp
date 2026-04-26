@@ -23,23 +23,31 @@ class CoreSystem {
 public:
 	struct Frame {
 
-	}; static Frame* fram;
+	}; static Frame* frame;
 private:
 	class Charactor {
 	private:
-
+		GLFWwindow* window{ nullptr };
+		HWND hwnd{ nullptr };
 	public:
+		void Render() {
 
+		}
 	};
 	class Menu {
 	private:
+		GLFWwindow* window{ nullptr };
+		HWND hwnd{ nullptr };
 
-		bool program_run = true;
+		bool run = true;
 	public:
+		bool ProgramRun() {
+			return run;
+		}
+		void Render() {
 
+		}
 	};
-
-
 
 	HANDLE process_check{ nullptr };
 
@@ -58,10 +66,11 @@ public:
 		charactor = new Charactor;
 		menu = new Menu;
 		
-		while (true) {
+		while (menu->ProgramRun()) {
 			glfwPollEvents();
 
-			// code
+			charactor->Render();
+			menu->Render();
 
 			SLEEP(25);
 		}
@@ -75,6 +84,4 @@ public:
 	}
 };
 
-int main() {
-	return 0;
-}
+int main() { CoreSystem run; }
