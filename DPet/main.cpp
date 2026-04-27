@@ -73,7 +73,7 @@ private:
 		}
 	public:
 		void Render() {
-
+			
 		}
 
 		Charactor() {
